@@ -7,6 +7,7 @@ class CourseListRowsCols extends StatelessWidget {
     return Column(
       children: <Widget>[
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Image(
               image: AssetImage("assets/images/React-icon.png"),
