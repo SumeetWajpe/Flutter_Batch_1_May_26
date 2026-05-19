@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello_application/widgets/CourseListRowsCols.dart';
 import 'package:flutter_hello_application/widgets/MyContainer.dart';
 import 'package:flutter_hello_application/widgets/RowsCols.dart';
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         // backgroundColor: Colors.teal,
         // body: MyContainer()
-        body: RowsCols()
+        // body: RowsCols()
+        body: CourseListRowsCols(),
       ),
     );
   }
