@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 class RowsCols extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Container(
           color: Colors.amber,
           height: 100,
           width: 100,
-
           // width: double.infinity,
           padding: EdgeInsets.all(10),
           child: const Text("Hello"),
@@ -19,7 +18,7 @@ class RowsCols extends StatelessWidget {
         Container(
           color: const Color.fromARGB(255, 66, 184, 72),
           height: 100,
-          width: double.infinity,
+          width: 100,
           padding: EdgeInsets.all(10),
           child: const Text("Hola"),
         ),
