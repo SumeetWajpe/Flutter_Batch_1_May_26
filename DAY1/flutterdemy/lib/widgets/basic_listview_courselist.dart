@@ -8,7 +8,12 @@ class BasicListViewCourseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: <Widget>[...listofcourses.map((String course) => Text(course))],
+      padding: const EdgeInsets.all(10),
+      children: <Widget>[
+        ...listofcourses.map(
+          (String course) => Text(course, style: TextStyle(fontSize: 30)),
+        ),
+      ],
     );
   }
 }
