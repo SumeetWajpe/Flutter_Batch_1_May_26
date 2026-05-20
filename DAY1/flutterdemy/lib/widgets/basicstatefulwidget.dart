@@ -8,7 +8,13 @@ class MyCounter extends StatefulWidget {
 }
 
 class _MyCounterState extends State<MyCounter> {
-  int count = 0;
+  var count;
+
+  @override
+  void initState() {
+    super.initState();
+    count = 100;
+  }
 
   void increment() {
     // increment the count
