@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy/widgets/basic_listview_courselist.dart';
+import 'package:flutterdemy/widgets/listview_courses_listtile.dart';
 
 class FlutterdemyApp extends StatelessWidget {
   const FlutterdemyApp({super.key});
@@ -16,7 +17,8 @@ class FlutterdemyApp extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.blue,
         ),
-          body: BasicListViewCourseList(),
+          // body: BasicListViewCourseList(),
+          body: CoursesWithListTileInListView()
 
       ),
     );
