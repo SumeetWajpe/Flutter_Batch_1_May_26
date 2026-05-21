@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy/models/course_model.dart';
 
-class CourseListNotifier extends ChangeNotifier{
-   final List<CourseModel> listofcourses = [
+class CourseListNotifier extends ChangeNotifier {
+  final List<CourseModel> listofcourses = [
     CourseModel(
       1,
       "React",
@@ -32,5 +32,10 @@ class CourseListNotifier extends ChangeNotifier{
       "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
     ),
   ];
- 
+
+  void deleteACourse(theIndex) {
+    // set the state
+    listofcourses.removeAt(theIndex);
+    notifyListeners();
+  }
 }

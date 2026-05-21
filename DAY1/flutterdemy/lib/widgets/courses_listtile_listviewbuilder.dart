@@ -18,14 +18,7 @@ class _CoursesWithListTileIncrementLikesState
     });
   }
 
-  // void deleteACourse(CourseModel course) {
-  //   // set the state
-  //   setState(() {
-  //     // listofcourses.removeWhere((theCourse) => theCourse.id == course.id);
-  //     int index = listofcourses.indexOf(course);
-  //     listofcourses.removeAt(index);
-  //   });
-  // }
+
 
   @override
   Widget build(BuildContext context) {
