@@ -33,7 +33,7 @@ class CourseListNotifier extends ChangeNotifier {
     ),
   ];
 
-  void deleteACourse(theIndex) {
+  void deleteACourse(int theIndex) {
     // set the state
     listofcourses.removeAt(theIndex);
     notifyListeners();

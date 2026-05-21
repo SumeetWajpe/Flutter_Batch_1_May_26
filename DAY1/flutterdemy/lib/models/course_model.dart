@@ -7,3 +7,10 @@ class CourseModel {
 
   CourseModel(this.id, this.title, this.subtitle, this.likes, this.imageUrl);
 }
+
+
+// add these
+// rating - 4
+// description -string
+// lastupdated - Date
+// trainer - String

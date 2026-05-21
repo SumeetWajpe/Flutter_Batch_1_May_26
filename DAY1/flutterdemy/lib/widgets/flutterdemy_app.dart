@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy/models/courselist_changenotifier_model.dart';
+import 'package:flutterdemy/widgets/total_courses.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterdemy/widgets/basic_listview_courselist.dart';
 import 'package:flutterdemy/widgets/basicstatefulwidget.dart';
@@ -26,7 +27,12 @@ class FlutterdemyApp extends StatelessWidget {
           // body: BasicListViewCourseList(),
           // body: CoursesWithListTileInListView()
           // body: MyCounter(),
-          body: CoursesWithListTileIncrementLikes(),
+          body: Column(
+            children: <Widget>[
+              Expanded(child: CoursesWithListTileIncrementLikes()),
+              TotalCourseCount(),
+            ],
+          ),
         ),
       ),
     );

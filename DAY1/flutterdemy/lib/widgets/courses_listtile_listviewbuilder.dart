@@ -25,6 +25,7 @@ class _CoursesWithListTileIncrementLikesState
           return GestureDetector(
             onHorizontalDragEnd: (_) {
               /// delete the course
+              courseListChangeNotifierObj.deleteACourse(index);
             },
             child: Card(
               elevation: 15,
@@ -50,6 +51,7 @@ class _CoursesWithListTileIncrementLikesState
                       onTap: () {
                         // change the state
                         //deleteACourse(index);
+                        courseListChangeNotifierObj.deleteACourse(index);
                       },
                     ),
                   ],
