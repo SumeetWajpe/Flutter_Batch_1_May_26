@@ -65,33 +65,38 @@ class _CoursesWithListTileIncrementLikesState
       itemBuilder: (context, index) {
         final course = listofcourses[index];
 
-        return Card(
-          elevation: 15,
-          margin: const EdgeInsets.only(bottom: 10),
-          child: ListTile(
-            leading: Image.network(course.imageUrl),
-            title: Text(course.title, style: const TextStyle(fontSize: 25)),
-            subtitle: Text(
-              course.subtitle,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Color.fromARGB(255, 81, 80, 80),
-              ),
-            ),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  child: const Icon(
-                    Icons.delete,
-                    color: Color.fromARGB(255, 223, 93, 84),
-                  ),
-                  onTap: () {
-                    // change the state
-                    deleteACourse(index);
-                  },
+        return GestureDetector(
+          onHorizontalDragEnd: (_) {
+            deleteACourse(index);
+          },
+          child: Card(
+            elevation: 15,
+            margin: const EdgeInsets.only(bottom: 10),
+            child: ListTile(
+              leading: Image.network(course.imageUrl),
+              title: Text(course.title, style: const TextStyle(fontSize: 25)),
+              subtitle: Text(
+                course.subtitle,
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 81, 80, 80),
                 ),
-              ],
+              ),
+              trailing: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    child: const Icon(
+                      Icons.delete,
+                      color: Color.fromARGB(255, 223, 93, 84),
+                    ),
+                    onTap: () {
+                      // change the state
+                      deleteACourse(index);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         );
