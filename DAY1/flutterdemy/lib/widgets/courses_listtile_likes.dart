@@ -42,6 +42,13 @@ class _CoursesWithListTileIncrementLikesState
     ),
   ];
 
+  void deleteACourse(CourseModel course) {
+    // set the state
+    setState(() {
+      listofcourses.removeWhere((theCourse) => theCourse.id == course.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -68,18 +75,13 @@ class _CoursesWithListTileIncrementLikesState
               children: [
                 InkWell(
                   child: const Icon(
-                    Icons.thumb_up_sharp,
-                    color: Color.fromARGB(255, 74, 173, 231),
+                    Icons.delete,
+                    color: Color.fromARGB(255, 223, 93, 84),
                   ),
                   onTap: () {
-                    setState(() {
-                      course.likes += 1;
-                    });
+                    // change the state
+                    deleteACourse(course);
                   },
-                ),
-                Text(
-                  course.likes.toString(),
-                  style: const TextStyle(fontSize: 15),
                 ),
               ],
             ),
@@ -89,6 +91,22 @@ class _CoursesWithListTileIncrementLikesState
     );
   }
 }
+
+//  InkWell(
+//                   child: const Icon(
+//                     Icons.thumb_up_sharp,
+//                     color: Color.fromARGB(255, 74, 173, 231),
+//                   ),
+//                   onTap: () {
+//                     setState(() {
+//                       course.likes += 1;
+//                     });
+//                   },
+//                 ),
+//                 Text(
+//                   course.likes.toString(),
+//                   style: const TextStyle(fontSize: 15),
+//                 ),
 
 // import 'package:flutter/material.dart';
 // import 'package:flutterdemy/models/course_model.dart';
