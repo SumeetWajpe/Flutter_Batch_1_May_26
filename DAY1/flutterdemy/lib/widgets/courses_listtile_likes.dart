@@ -41,13 +41,21 @@ class _CoursesWithListTileIncrementLikesState
       "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
     ),
   ];
-
-  void deleteACourse(CourseModel course) {
+  void deleteACourse(theIndex) {
     // set the state
     setState(() {
-      listofcourses.removeWhere((theCourse) => theCourse.id == course.id);
+      listofcourses.removeAt(theIndex);
     });
   }
+
+  // void deleteACourse(CourseModel course) {
+  //   // set the state
+  //   setState(() {
+  //     // listofcourses.removeWhere((theCourse) => theCourse.id == course.id);
+  //     int index = listofcourses.indexOf(course);
+  //     listofcourses.removeAt(index);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +88,7 @@ class _CoursesWithListTileIncrementLikesState
                   ),
                   onTap: () {
                     // change the state
-                    deleteACourse(course);
+                    deleteACourse(index);
                   },
                 ),
               ],
