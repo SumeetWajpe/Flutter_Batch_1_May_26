@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy/widgets/basic_listview_courselist.dart';
 import 'package:flutterdemy/widgets/basicstatefulwidget.dart';
-import 'package:flutterdemy/widgets/courses_listtile_likes.dart';
+import 'package:flutterdemy/widgets/courses_listtile_listviewbuilder.dart';
 import 'package:flutterdemy/widgets/listview_courses_listtile.dart';
 
 class FlutterdemyApp extends StatelessWidget {

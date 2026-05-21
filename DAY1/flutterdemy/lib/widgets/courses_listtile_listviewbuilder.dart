@@ -11,36 +11,6 @@ class CoursesWithListTileIncrementLikes extends StatefulWidget {
 
 class _CoursesWithListTileIncrementLikesState
     extends State<CoursesWithListTileIncrementLikes> {
-  final List<CourseModel> listofcourses = [
-    CourseModel(
-      1,
-      "React",
-      "A JS library",
-      100,
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/3840px-React-icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
-    ),
-    CourseModel(
-      2,
-      "Node",
-      "A Server FX",
-      200,
-      "https://miro.medium.com/v2/resize:fit:800/1*bc9pmTiyKR0WNPka2w3e0Q.png",
-    ),
-    CourseModel(
-      3,
-      "Angular",
-      "A JS FX",
-      500,
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/960px-Angular_gradient_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
-    ),
-    CourseModel(
-      4,
-      "Flutter",
-      "A Cross Platform solution",
-      200,
-      "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
-    ),
-  ];
   void deleteACourse(theIndex) {
     // set the state
     setState(() {
