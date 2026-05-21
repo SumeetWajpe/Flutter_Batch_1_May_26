@@ -12,20 +12,23 @@ class FlutterdemyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (_)=>CourseListNotifier(),child:MaterialApp(
-      title: 'Flutter Demo',
+    return ChangeNotifierProvider(
+      create: (_) => CourseListNotifier(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
 
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Flutterdemy"),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Flutterdemy"),
+            centerTitle: true,
+            backgroundColor: Colors.blue,
+          ),
+          // body: BasicListViewCourseList(),
+          // body: CoursesWithListTileInListView()
+          // body: MyCounter(),
+          body: CoursesWithListTileIncrementLikes(),
         ),
-        // body: BasicListViewCourseList(),
-        // body: CoursesWithListTileInListView()
-        // body: MyCounter(),
-        body: CoursesWithListTileIncrementLikes(),
       ),
-    );)
+    );
   }
 }
