@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemy/models/courselist_changenotifier_model.dart';
+import 'package:provider/provider.dart';
 import 'package:flutterdemy/widgets/basic_listview_courselist.dart';
 import 'package:flutterdemy/widgets/basicstatefulwidget.dart';
 import 'package:flutterdemy/widgets/courses_listtile_listviewbuilder.dart';
@@ -10,7 +12,7 @@ class FlutterdemyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(create: (_)=>CourseListNotifier(),child:MaterialApp(
       title: 'Flutter Demo',
 
       home: Scaffold(
@@ -24,6 +26,6 @@ class FlutterdemyApp extends StatelessWidget {
         // body: MyCounter(),
         body: CoursesWithListTileIncrementLikes(),
       ),
-    );
+    );)
   }
 }
