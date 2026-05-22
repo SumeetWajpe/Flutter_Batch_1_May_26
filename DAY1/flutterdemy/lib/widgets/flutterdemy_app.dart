@@ -22,9 +22,12 @@ class FlutterdemyApp extends StatelessWidget {
 
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Flutterdemy"),
+            title: const Text(
+              "Flutterdemy",
+              style: TextStyle(color: Colors.white),
+            ),
             centerTitle: true,
-            backgroundColor: Colors.blue,
+            backgroundColor: const Color.fromARGB(255, 116, 3, 136),
           ),
           // body: BasicListViewCourseList(),
           // body: CoursesWithListTileInListView()
@@ -34,6 +37,13 @@ class FlutterdemyApp extends StatelessWidget {
               Expanded(child: CoursesWithListTileIncrementLikes()),
               TotalCourseCount(),
             ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // Navigate to AddNewCourse Screen
+            },
+            backgroundColor: const Color.fromARGB(255, 116, 3, 136),
+            child: Icon(Icons.add, color: Colors.white),
           ),
         ),
       ),

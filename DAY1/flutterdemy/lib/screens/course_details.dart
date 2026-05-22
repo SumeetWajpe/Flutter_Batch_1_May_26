@@ -84,14 +84,6 @@ class _CourseDetailsState extends State<CourseDetails> {
               padding: const EdgeInsets.all(8.0),
               child: Text(widget.theCourse.description),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(widget.theCourse.description),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(widget.theCourse.description),
-            ),
           ],
         ),
       ),
