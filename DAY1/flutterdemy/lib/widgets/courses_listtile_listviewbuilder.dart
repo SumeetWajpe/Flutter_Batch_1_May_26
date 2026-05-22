@@ -41,11 +41,11 @@ class _CoursesWithListTileIncrementLikesState
                       ),
                     );
                   },
-                  child: Image.network(course.imageUrl),
+                  child: Image.network(course.imageUrl!),
                 ),
-                title: Text(course.title, style: const TextStyle(fontSize: 25)),
+                title: Text(course.title!, style: const TextStyle(fontSize: 25)),
                 subtitle: Text(
-                  course.subtitle,
+                  course.subtitle!,
                   style: const TextStyle(
                     fontSize: 15,
                     color: Color.fromARGB(255, 81, 80, 80),

@@ -62,4 +62,9 @@ class CourseListNotifier extends ChangeNotifier {
     listofcourses.removeAt(theIndex);
     notifyListeners();
   }
+
+  void addANewCourse(CourseModel course) {
+    listofcourses.add(course);
+    notifyListeners();
+  }
 }

@@ -22,17 +22,17 @@ class _CourseDetailsState extends State<CourseDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image(image: NetworkImage(widget.theCourse.imageUrl), height: 300),
+            Image(image: NetworkImage(widget.theCourse.imageUrl!), height: 300),
             ListTile(
               title: Text(
-                widget.theCourse.title,
+                widget.theCourse.title!,
                 style: const TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Text(
-                widget.theCourse.subtitle,
+                widget.theCourse.subtitle!,
                 style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _CourseDetailsState extends State<CourseDetails> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(widget.theCourse.description),
+              child: Text(widget.theCourse.description!),
             ),
           ],
         ),

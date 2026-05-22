@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemy/models/course_model.dart';
+import 'package:flutterdemy/models/courselist_changenotifier_model.dart';
+import 'package:provider/provider.dart';
 
 class AddNewCourse extends StatefulWidget {
   const AddNewCourse({super.key});
@@ -19,7 +22,7 @@ class _AddNewCourseState extends State<AddNewCourse> {
   String? _subTitles;
   String? _trainer;
 
-  int? _id;
+  int _id = 0;
   int? _likes;
   int? _rating;
 
@@ -174,7 +177,24 @@ class _AddNewCourseState extends State<AddNewCourse> {
     _formKey.currentState!
         .save(); // calls the onSave method on the widget (TextFormField)
 
-    print('$_id,$_title,$_subTitles');
+    final newCourse = CourseModel(
+      _id,
+      _title,
+      _subtitle,
+      _likes,
+      _imageUrl,
+      _description,
+      _rating,
+      _lastUpdated,
+      _language,
+      _subtitlesList,
+      _trainer,
+    );
+
+    Provider.of<CourseListNotifier>(
+      context,
+      listen: false,
+    ).addANewCourse(newCourse);
   }
 
   @override
