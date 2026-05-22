@@ -11,10 +11,7 @@ class CourseDetails extends StatefulWidget {
 }
 
 class _CourseDetailsState extends State<CourseDetails> {
- 
-  void changeFavorite() {
-   
-  }
+  void changeFavorite() {}
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +49,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                     InkWell(
                       onTap: changeFavorite,
                       child: Icon(
-                        isFavorite == true
-                            ? Icons.favorite
-                            : Icons.favorite_outline,
+                        Icons.favorite_outline,
                         color: Colors.red[900],
                       ),
                     ),
