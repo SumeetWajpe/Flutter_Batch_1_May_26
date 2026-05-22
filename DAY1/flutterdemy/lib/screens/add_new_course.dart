@@ -10,8 +10,20 @@ class AddNewCourse extends StatefulWidget {
 class _AddNewCourseState extends State<AddNewCourse> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  int? _id;
   String? _title;
+  String? _subtitle;
+  String? _imageUrl;
+  String? _description;
+  String? _language;
+  DateTime? _lastUpdated;
+  String? _subTitles;
+  String? _trainer;
+
+  int? _id;
+  int? _likes;
+  int? _rating;
+
+  List<String> _subtitlesList = [];
 
   Widget _buildIdField() {
     return TextFormField(
@@ -38,6 +50,118 @@ class _AddNewCourseState extends State<AddNewCourse> {
         labelText: "Course Title",
         border: OutlineInputBorder(),
       ),
+      onSaved: (value) {
+        _title = value;
+      },
+    );
+  }
+
+  Widget _buildSubtitleField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Subtitle',
+        border: OutlineInputBorder(),
+      ),
+      onSaved: (value) {
+        _subtitle = value;
+      },
+    );
+  }
+
+  Widget _buildLikesField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Likes',
+        border: OutlineInputBorder(),
+      ),
+      keyboardType: TextInputType.number,
+      initialValue: '0',
+      onSaved: (value) {
+        _likes = int.tryParse(value ?? '0') ?? 0;
+      },
+    );
+  }
+
+  Widget _buildImageUrlField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Image URL',
+        border: OutlineInputBorder(),
+      ),
+      onSaved: (value) {
+        _imageUrl = value;
+      },
+    );
+  }
+
+  Widget _buildDescriptionField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Description',
+        border: OutlineInputBorder(),
+      ),
+      maxLines: 4,
+      onSaved: (value) {
+        _description = value;
+      },
+    );
+  }
+
+  Widget _buildRatingField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Rating',
+        border: OutlineInputBorder(),
+      ),
+      keyboardType: TextInputType.number,
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          _rating = int.tryParse(value);
+        }
+      },
+    );
+  }
+
+  Widget _buildLanguageField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Language',
+        border: OutlineInputBorder(),
+      ),
+      onSaved: (value) {
+        _language = value;
+      },
+    );
+  }
+
+  Widget _buildSubtitlesField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Subtitles (comma separated)',
+        border: OutlineInputBorder(),
+      ),
+      onSaved: (value) {
+        _subTitles = value;
+        _subtitlesList = value!
+            .split(',')
+            .map((subtitle) => subtitle.trim())
+            .where((subtitle) => subtitle.isNotEmpty)
+            .toList();
+      },
+    );
+  }
+
+  Widget _buildLastUpdatedField() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Last Updated (yyyy-mm-dd)',
+        border: OutlineInputBorder(),
+      ),
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          _lastUpdated = DateTime.tryParse(value);
+        }
+      },
     );
   }
 
@@ -49,6 +173,8 @@ class _AddNewCourseState extends State<AddNewCourse> {
 
     _formKey.currentState!
         .save(); // calls the onSave method on the widget (TextFormField)
+
+    print('$_id,$_title,$_subTitles');
   }
 
   @override
@@ -72,6 +198,21 @@ class _AddNewCourseState extends State<AddNewCourse> {
               const SizedBox(height: 16),
               _buildTitleField(),
               const SizedBox(height: 16),
+              _buildSubtitleField(),
+              const SizedBox(height: 16),
+              _buildImageUrlField(),
+              const SizedBox(height: 16),
+              _buildLikesField(),
+              const SizedBox(height: 16),
+              _buildLanguageField(),
+              const SizedBox(height: 16),
+              _buildRatingField(),
+              const SizedBox(height: 16),
+              _buildDescriptionField(),
+              const SizedBox(height: 16),
+              _buildLastUpdatedField(),
+              const SizedBox(height: 16),
+              _buildSubtitlesField(),
 
               SizedBox(
                 width: double.infinity,
