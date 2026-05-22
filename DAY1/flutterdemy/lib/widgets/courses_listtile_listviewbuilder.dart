@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemy/models/course_model.dart';
 import 'package:flutterdemy/models/courselist_changenotifier_model.dart';
+import 'package:flutterdemy/screens/course_details.dart';
 import 'package:provider/provider.dart';
 
 class CoursesWithListTileIncrementLikes extends StatefulWidget {
@@ -31,7 +32,17 @@ class _CoursesWithListTileIncrementLikesState
               elevation: 15,
               margin: const EdgeInsets.only(bottom: 10),
               child: ListTile(
-                leading: Image.network(course.imageUrl),
+                leading: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CourseDetails(course),
+                      ),
+                    );
+                  },
+                  child: Image.network(course.imageUrl),
+                ),
                 title: Text(course.title, style: const TextStyle(fontSize: 25)),
                 subtitle: Text(
                   course.subtitle,
