@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class AddNewCourse extends StatefulWidget {
+  const AddNewCourse({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<AddNewCourse> createState() => _AddNewCourseState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _AddNewCourseState extends State<AddNewCourse> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String? _title;
