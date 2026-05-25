@@ -21,9 +21,10 @@ class Home extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              GoRouter.of(
-                context,
-              ).pushNamed(MyAppRouterConstants.profileRouteName);
+              GoRouter.of(context).pushNamed(
+                MyAppRouterConstants.profileRouteName,
+                pathParameters: {'username': 'Sumeet Wajpe', 'userid': 'sw101'},
+              );
             },
             child: Text("Go to Profile"),
           ),
