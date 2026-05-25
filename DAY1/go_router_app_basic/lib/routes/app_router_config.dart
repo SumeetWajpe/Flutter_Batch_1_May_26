@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_app_basic/pages/about.dart';
 import 'package:go_router_app_basic/pages/contactus.dart';
+import 'package:go_router_app_basic/pages/error.dart';
 import 'package:go_router_app_basic/pages/home.dart';
 import 'package:go_router_app_basic/pages/login.dart';
 import 'package:go_router_app_basic/pages/profile.dart';
@@ -37,18 +39,19 @@ class MyAppRouter {
         GoRoute(
           path: "/contactus",
           name: MyAppRouterConstants.contactUsRouteName,
+          // builder -> return any widget
+          // page builder -> Return a page
           builder: (context, state) {
             return ContactUs();
           },
-        ),
-        GoRoute(
-          path: "/login",
-          name: MyAppRouterConstants.loginRouteName,
-          builder: (context, state) {
-            return Login();
-          },
+          // pageBuilder: (context, state) {
+          //   return MaterialPage(child: ContactUs());
+          // },
         ),
       ],
+      errorBuilder: (context, state) {
+        return ErrorPage();
+      },
       redirect: (context, state) {
         // isAuth -> Should be an app state
         if (!isAuth &&
