@@ -50,7 +50,7 @@ class MyAppRouter {
         ),
       ],
       errorBuilder: (context, state) {
-        return ErrorPage();
+        return ErrorPage(errormsg: (state.error!.message));
       },
       redirect: (context, state) {
         // isAuth -> Should be an app state
