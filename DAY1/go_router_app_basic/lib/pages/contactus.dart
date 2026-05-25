@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class ContactUs extends StatelessWidget {
+  const ContactUs({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(children: [Center(child: Text("Home"))]),
+      body: Column(children: [Center(child: Text("ContactUs"))]),
     );
   }
 }
