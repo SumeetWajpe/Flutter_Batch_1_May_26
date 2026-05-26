@@ -40,11 +40,26 @@ class _PostListScreenState extends State<PostListScreen> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return const Center(child: Text('Error : ${snapshot.error}'));
+          return Center(child: Text('Error : ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return const Center(child: Text('No data found'));
         }
         final posts = snapshot.data;
+        return ListView.builder(
+          itemCount: posts!.length,
+          itemBuilder: (context, index) {
+            final post = posts[index];
+            return ListTile(
+              leading: CircleAvatar(child: Text('${post.id}')),
+              title: Text(post.title),
+              subtitle: Text(
+                post.body,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            );
+          },
+        );
       },
     );
   }
