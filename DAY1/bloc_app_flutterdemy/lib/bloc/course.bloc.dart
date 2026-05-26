@@ -93,29 +93,55 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
             ),
           ],
         ),
-      ); // events
+      ) {
+    on<AddCourseEvent>(_addCourse);
+    on<DeleteCourseEvent>(_deleteCourse);
+    on<IncrementLikesEvent>(_incrementLikes);
+  } // events
 
   /// ==========
   /// INCREMENT LIKES HANDLER
   /// ==========
 
-  void _incrementLikes(IncrementLikesEvent event, Emitter<CourseModel> emit) {
+  void _incrementLikes(IncrementLikesEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+    final updatedCourses = state.courses.map((course) {
+      if (course.id == event.courseId) {
+        // course.likes++; // Mutating the original object (Not recommended)
+        // NEW IMMUTABLITY APPROACH
+        return course.copyWith(likes: course.likes + 1);
+      }
+
+      return course;
+    }).toList();
+
+    // emit
+    emit(CourseState(courses: updatedCourses));
   }
 
   /// ==========
   /// INCREMENT LIKES HANDLER
   /// ==========
 
-  void _deleteCourse(DeleteCourseEvent event, Emitter<CourseModel> emit) {
+  void _deleteCourse(DeleteCourseEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+    final updatedCourses = state.courses
+        .where((course) => course.id != event.courseId)
+        .toList();
+
+    emit(CourseState(courses: updatedCourses));
   }
 
   /// ==========
   /// INCREMENT LIKES HANDLER
   /// ==========
 
-  void _addCourse(AddCourseEvent event, Emitter<CourseModel> emit) {
+  void _addCourse(AddCourseEvent event, Emitter<CourseState> emit) {
     // logic to increment likes
+
+    final updatedCourses = List<CourseModel>.from(state.courses)
+      ..add(event.course);
+
+    emit(CourseState(courses: updatedCourses));
   }
 }
