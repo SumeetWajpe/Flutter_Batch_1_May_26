@@ -12,6 +12,14 @@ class PostListScreen extends StatefulWidget {
 }
 
 class _PostListScreenState extends State<PostListScreen> {
+  late Future<List<PostModel>> _postsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _postsFuture = fetchPosts();
+  }
+
   Future<List<PostModel>> fetchPosts() async {
     final url = Uri.parse("https://jsonplaceholder.typicode.com/posts");
     final response = await http.get(url);
@@ -20,12 +28,24 @@ class _PostListScreenState extends State<PostListScreen> {
       final List<dynamic> jsonList = json.decode(response.body);
       return jsonList.map((json) => PostModel.fromJson(json)).toList();
     } else {
-      throw Exception("Failied to load posts !");
+      throw Exception("Failed to load posts !");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return FutureBuilder<List<PostModel>>(
+      future: _postsFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return const Center(child: Text('Error : ${snapshot.error}'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('No data found'));
+        }
+        final posts = snapshot.data;
+      },
+    );
   }
 }
