@@ -65,6 +65,17 @@ CREATE TABLE tasks(
     });
   }
 
+  // UPDATE - Update a task
+  Future<int> updateTask(Task task) async {
+    Database db = await instance.database;
+    return await db.update(
+      'tasks',
+      task.toMap(),
+      where: 'id = ?',
+      whereArgs: [task.id],
+    );
+  }
+
   // DELETE - Delete a task
   Future<int> deleteTask(int id) async {
     Database db = await instance.database;

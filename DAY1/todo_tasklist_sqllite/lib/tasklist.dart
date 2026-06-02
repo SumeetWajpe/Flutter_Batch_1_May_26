@@ -22,16 +22,29 @@ class _TaskListScreenState extends State<TaskListScreen> {
     _refreshTaskList();
   }
 
-  _refreshTaskList() async {
+  void _refreshTaskList() async {
     List<Task> tasklist = await dbHelper.getAllTasks();
     setState(() {
       tasks = tasklist;
     });
   }
 
-  void _deleteTask(int i) {}
+  _deleteTask(int id) async {
+    await dbHelper.deleteTask(id);
+    _refreshTaskList();
+  }
 
-  void _toggleTaskStatus(Task task) {}
+  _toggleTaskStatus(Task task) async {
+    Task updatedTask = Task(
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      isCompleted: !task.isCompleted,
+      createdAt: task.createdAt,
+    );
+    await dbHelper.updateTask(updatedTask);
+    _refreshTaskList();
+  }
 
   void _addTask() async {
     if (titleController.text.isEmpty) return;
@@ -103,11 +116,15 @@ class _TaskListScreenState extends State<TaskListScreen> {
                           task.isCompleted
                               ? Icons.check_box
                               : Icons.check_box_outline_blank,
+                          semanticLabel: "Toggle task ${task.title}",
                         ),
                         onPressed: () => _toggleTaskStatus(task),
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete, semanticLabel: "Delete Task"),
+                        icon: Icon(
+                          Icons.delete,
+                          semanticLabel: "Delete Task ${task.title}",
+                        ),
                         onPressed: () => _deleteTask(task.id!),
                       ),
                     ],
